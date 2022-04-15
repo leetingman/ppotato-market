@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.kosta.finalproject</groupId>
-	<artifactId>SpringBoot-PotatoMarket</artifactId>
+	<artifactId>SpringBoot-PPotatoMarket</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SpringBoot-PotatoMarket</name>
+	<name>SpringBoot-PPotatoMarket</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
