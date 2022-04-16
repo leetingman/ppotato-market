@@ -132,6 +132,14 @@ public class ItemController {
 		model.addAttribute("itemList", listByCondition);
 		return "main.tiles";
 	}
+	
+//	//중고물품 게시물 조건별로 정렬하기
+//	@GetMapping("sortAllItemListByCondtion")
+//	public String sortAllItemListByCondtion(String condition,Model model) {
+//		
+//		
+//		return "main.tiles";
+//	}
 
 	
 }
