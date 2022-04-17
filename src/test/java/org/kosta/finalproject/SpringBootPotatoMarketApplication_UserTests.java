@@ -4,6 +4,7 @@ import java.sql.Array;
 import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
+import org.kosta.finalproject.model.domain.Authority;
 import org.kosta.finalproject.model.domain.UserVO;
 import org.kosta.finalproject.model.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,11 +38,11 @@ class SpringBootPotatoMarketApplication_UserTests {
 		//System.out.println(userMapper.getCountUser());
 	//}
 	
-	//@Test
-	//void registerRole() {
-	//	userMapper.registerRole(new Authority("security10","Role_Member"));
-	//	System.out.println("총 atho 수"+ userMapper.getCountAutho());
-	//}
+	@Test
+	void registerRole() {
+		userMapper.registerRole(new Authority("security10","Role_Member"));
+		System.out.println("총 atho 수"+ userMapper.getCountAutho());
+	}
 	
 		@Test
 		void findAuthorityByUsername() {
