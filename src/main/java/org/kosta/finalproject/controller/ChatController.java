@@ -37,15 +37,13 @@ public class ChatController {
 	private ChatMessageRepository CMR;
 	@Autowired
 	private CounterService counterService;
-
 	@Autowired
 	private ChattingService chattingService;
-
 	@Autowired
 	private ItemService itemService;
 	@Autowired
 	private UserService userService;
-
+	//MongoDB 시퀀스 생성시 필요 /방만들때도 필요
 	private static final String HOSTING_SEQ_KEY = "userid";
 
 	@MessageMapping("/chat.register.{chatRoomId}")
@@ -101,8 +99,8 @@ public class ChatController {
 //		chatForm 도 user정보 수정 해줘야댐
 //		error shooting - userId 가 sellerId일 때 itemlist 에서 제외 됨
 		/*
-		 * 1. 
-		*/
+		 * 1.
+		 */
 		System.out.println("chatForm start");
 		System.out.println(chatroomVO.toString());
 		int itemId = chatroomVO.getItemId();
@@ -115,16 +113,15 @@ public class ChatController {
 		if (chatRoomId == 0) {
 			chatRoomId = chattingService.createChatRoom(itemId, userId, sellerId);
 		}
-		System.out.println("create chatRoom after chatRoomId =>"+chatRoomId);
-		
-		
+		System.out.println("create chatRoom after chatRoomId =>" + chatRoomId);
+
 		// 만약 userId와 sellerId 가 같은 경우
 //		if (userId.equals(sellerId)) {
 //			System.out.println("동일");
 //			// chatRoomId로 chatRoomVO Collection에 저장되어 있는 채팅방 정보 값 가져오기
 //			sellerId = chattingService.findChatRoomVOIdByChatRoomId(chatRoomId).getSellerId();
 //		}
-		model.addAttribute("itemId",itemId);
+		model.addAttribute("itemId", itemId);
 		model.addAttribute("userIdC", userId);
 		model.addAttribute("chatRoomId", chatRoomId);
 		System.out.println("Controller" + chatRoomId);
@@ -166,13 +163,13 @@ public class ChatController {
 				}
 			}
 		}
-     	System.out.println("sort후"+chatmessagelist);
-     	System.out.println("sort후"+itemchatlist);
+		System.out.println("sort후" + chatmessagelist);
+		System.out.println("sort후" + itemchatlist);
 // ItemVO test
 //     	System.out.println("ItemVO:"+itemchatlist.toString());
 		List<String> itemimglist = new ArrayList<String>();
 		List<String> userimglist = new ArrayList<String>();
-		List<UserVO> chatpartnerlist= new ArrayList<UserVO>();
+		List<UserVO> chatpartnerlist = new ArrayList<UserVO>();
 
 		// need userId And sellerId check
 		/*
@@ -186,23 +183,19 @@ public class ChatController {
 		 * 
 		 * }
 		 */
-		
+
 		for (int i = 0; i < itemchatlist.size(); i++) {
-			itemimglist.add(itemService.findItemImageVOByItemId(itemchatlist.get(i).getItemId()).getImageName());			
+			itemimglist.add(itemService.findItemImageVOByItemId(itemchatlist.get(i).getItemId()).getImageName());
 			if (itemchatlist.get(i).getUserVO().getUserId().equals(userId)) {
 				// 상대방 UserVO 에 대한 userId 찾기
-				userimglist.add(
-						userService.findUserById(
-								chattingService.findChatRoomVOBySellerIdAndItemId(
-										itemchatlist.get(i).getItemId()
-										, userId).getUserId())
+				userimglist.add(userService
+						.findUserById(chattingService
+								.findChatRoomVOBySellerIdAndItemId(itemchatlist.get(i).getItemId(), userId).getUserId())
 						.getUserImage());
 				// 상대방 UserVO로 바꿔주기 리펙토링 필요 --=> 상대방 UserVO를 새로운 리스트에 담아서 리퀘스트보낸다
-				//ChatRoomVO 객체의 userId값 가져옴 userId 
-				chatpartnerlist.add(
-						userService.findUserById(
-						chattingService.findChatRoomVOBySellerIdAndItemId(itemchatlist.get(i).getItemId(),userId).getUserId())							
-						);
+				// ChatRoomVO 객체의 userId값 가져옴 userId
+				chatpartnerlist.add(userService.findUserById(chattingService
+						.findChatRoomVOBySellerIdAndItemId(itemchatlist.get(i).getItemId(), userId).getUserId()));
 				/*
 				 * itemchatlist.get(i).setUserVO(userService.findUserById(chattingService
 				 * .findChatRoomVOBySellerIdAndItemId(itemchatlist.get(i).getItemId(),
@@ -210,19 +203,17 @@ public class ChatController {
 				 */
 			} else {
 				userimglist.add(userService.findUserById(itemchatlist.get(i).getUserVO().getUserId()).getUserImage());
-				chatpartnerlist.add(
-					userService.findUserById(
-							// sellerId 에 대한 정보 필요
-							chattingService.findChatRoomVOByUserIdAndItemId(itemchatlist.get(i).getItemId(),userId)						 
-						.getSellerId())							
-						);
+				chatpartnerlist.add(userService.findUserById(
+						// sellerId 에 대한 정보 필요
+						chattingService.findChatRoomVOByUserIdAndItemId(itemchatlist.get(i).getItemId(), userId)
+								.getSellerId()));
 			}
 
 		}
-		System.out.println("check plz"+chatpartnerlist);
-		
-		model.addAttribute("chatpartnerlist",chatpartnerlist);
-		
+		System.out.println("check plz" + chatpartnerlist);
+
+		model.addAttribute("chatpartnerlist", chatpartnerlist);
+
 		// 유저 확인을 위한 리스트
 
 		// item이미지
@@ -303,7 +294,7 @@ public class ChatController {
 
 		List<String> itemimglist = new ArrayList<String>();
 		List<String> userimglist = new ArrayList<String>();
-		List<UserVO> chatpartnerlist= new ArrayList<UserVO>();
+		List<UserVO> chatpartnerlist = new ArrayList<UserVO>();
 		/*
 		 * hotfix issue : chatRoomId를 통한 본인이 아닌 상대방 의 정보를 갖어와야함 userId(Session) is
 		 * sellerId ? =>상대방에 대한정보
@@ -311,7 +302,7 @@ public class ChatController {
 		// itemchatlist 에대한 아이템
 		for (int i = 0; i < itemchatlist.size(); i++) {
 			itemimglist.add(itemService.findItemImageVOByItemId(itemchatlist.get(i).getItemId()).getImageName());
-			
+
 			if (itemchatlist.get(i).getUserVO().getUserId().equals(userId)) {
 				// 상대방 UserVO 에 대한 userId 찾기
 				userimglist.add(userService
@@ -319,10 +310,9 @@ public class ChatController {
 								.findChatRoomVOBySellerIdAndItemId(itemchatlist.get(i).getItemId(), userId).getUserId())
 						.getUserImage());
 				// 상대방 UserVO로 바꿔주기 리펙토링 필요 --=> 상대방 UserVO를 새로운 리스트에 담아서 리퀘스트보낸다
-				//ChatRoomVO 객체의 userId값 가져옴 userId 
+				// ChatRoomVO 객체의 userId값 가져옴 userId
 				chatpartnerlist.add(userService.findUserById(chattingService
-						 .findChatRoomVOBySellerIdAndItemId(itemchatlist.get(i).getItemId(),userId).getUserId())							
-						);
+						.findChatRoomVOBySellerIdAndItemId(itemchatlist.get(i).getItemId(), userId).getUserId()));
 				/*
 				 * itemchatlist.get(i).setUserVO(userService.findUserById(chattingService
 				 * .findChatRoomVOBySellerIdAndItemId(itemchatlist.get(i).getItemId(),
@@ -331,16 +321,15 @@ public class ChatController {
 			} else {
 				userimglist.add(userService.findUserById(itemchatlist.get(i).getUserVO().getUserId()).getUserImage());
 				chatpartnerlist.add(
-						
-					userService.findUserById(
-							// sellerId 에 대한 정보 필요
-							chattingService.findChatRoomVOByUserIdAndItemId(itemchatlist.get(i).getItemId(),userId)						 
-						.getSellerId())							
-						);
+
+						userService.findUserById(
+								// sellerId 에 대한 정보 필요
+								chattingService.findChatRoomVOByUserIdAndItemId(itemchatlist.get(i).getItemId(), userId)
+										.getSellerId()));
 			}
 
 		}
-		model.addAttribute("chatpartnerlist",chatpartnerlist);
+		model.addAttribute("chatpartnerlist", chatpartnerlist);
 		model.addAttribute("itemimglist", itemimglist);
 		model.addAttribute("userimglist", userimglist);
 		model.addAttribute("itemchatlist", itemchatlist);
