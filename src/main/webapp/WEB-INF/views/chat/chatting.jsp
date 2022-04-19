@@ -95,6 +95,7 @@
 															채팅 내용														 													
 													 -->
 														${chatmessagelist[status.index].content}
+														
 													</p>
 												</figure>
 												<figure class="messaging__image-item" 
@@ -140,17 +141,17 @@
 								</div>
 							</div>
 
-							<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+							<!-- message history 불러오기 부분 -->
 							<div id="chat-page" class="messaging__content"
 								data-background-color="rgba(0,0,0,.05)">
 								<div class="messaging__main-chat">
-
+								
 									<c:forEach var="l" items="${chatHistory}" varStatus="listatus">
 										<c:choose>
 
 											<c:when test="${l.sender eq userId}">
 												<div class="messaging__main-chat__bubble user">
-													<ul>
+													<ul>												
 														<p>${l.content}</p>
 													</ul>
 												</div>
@@ -168,9 +169,10 @@
 										</c:choose>
 
 									</c:forEach>
+									<!-- message start-->
 									<div>
 										<ul id="messageArea">
-
+											you've read up to here
 										</ul>
 									</div>
  

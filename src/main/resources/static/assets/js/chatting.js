@@ -9,6 +9,7 @@ let messageArea = document.querySelector('#messageArea');
 let messageAreaUser = document.querySelector('#messageAreaUser');
 let connectingElement = document.querySelector('.connecting');
 let chatRoomId = document.querySelector('#chatRoomId').value;
+let userName =document.querySelector('#name').value;
 
 
 let stompClient = null;
@@ -104,10 +105,11 @@ function onMessageReceived(payload) {
 	let messageText = document.createTextNode(message.content);
 	textElement.appendChild(messageText);
 	messageElement.appendChild(textElement);
-	if (message.sender == 'kwon') {
+	if (message.sender != userName) {
 		messageElement.className = 'messaging__main-chat__bubble';
 	}
 	else {
+		
 		messageElement.className = 'messaging__main-chat__bubble user';
 	}
 	messageArea.appendChild(messageElement);
