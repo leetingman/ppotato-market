@@ -277,7 +277,7 @@
                               <c:choose>
                               <c:when test="${userId ne itemList.userVO.userId}">
                               <figure>
-                                 <a href="chatForm?userId=${userId}&selleId=${itemList.userVO.userId}&itemId=${itemList.itemId}"> <i class="fa fa-user"></i>채팅 ${crnum[status.index] }
+                                 <a href="chatForm?userId=${userId}&selleId=${itemList.userVO.userId}&itemId=${itemList.itemId}"> <i class="fa fa-user"></i>chat ${crnum[status.index] }
                                  </a>
    
                               </figure>

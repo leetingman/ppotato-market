@@ -63,6 +63,11 @@ public class ItemController {
 	public String selectItemByItemId(int itemId, String userId, Model model , HttpSession session) {
 		System.out.println("상세보기페이지 controller : " +userId);
 		List<ItemVO> userItemList  = itemService.getUserItemListByUserId(userId , itemId);
+		List<ImageVO> sellerItemImageList=new ArrayList<ImageVO>();
+		//sellerItemImageList See other Items 이미지. 유저 아이템리스트 별로 itemVO 갖고오기 
+		for(int i=0;i<userItemList.size();i++) {
+			sellerItemImageList.add(itemService.findItemImageVOByItemId(userItemList.get(i).getItemId()));
+		}
 		System.out.println(userItemList.size());
 		  @SuppressWarnings("unchecked")
 		  ArrayList<Integer> noList =  (ArrayList<Integer>) session.getAttribute("noList");
@@ -77,6 +82,8 @@ public class ItemController {
 		model.addAttribute("itemDetail", itemService.selectItemByItemId(itemId));
 		model.addAttribute("userItemList",userItemList);
 		model.addAttribute("imageList",itemService.findItemImageListByItemId(itemId));
+		model.addAttribute("sellerItemImageList",sellerItemImageList);
+		System.out.println(userItemList);
 		return "item/item-detail.tiles";
 	}
 	
