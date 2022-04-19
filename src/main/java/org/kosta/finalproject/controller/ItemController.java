@@ -8,6 +8,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.kosta.finalproject.model.domain.CategoryVO;
+import org.kosta.finalproject.model.domain.ImageVO;
 import org.kosta.finalproject.model.domain.ItemVO;
 import org.kosta.finalproject.model.service.ChattingService;
 import org.kosta.finalproject.model.service.ItemService;
@@ -126,10 +127,17 @@ public class ItemController {
 	public String selectAllItemListByCondition(ItemVO itemVO, Model model) {
 		List<ItemVO> listByCondition = itemService.selectAllItemListByCondition(itemVO);
 		List<CategoryVO> categoryList = itemService.getAllCategoryList();// 카테고리 목록 가지고오기
+		List<ImageVO> imageList=new ArrayList<ImageVO>();
+		for(int i=0;i<listByCondition.size();i++) {
+			imageList.add(itemService.findItemImageVOByItemId(listByCondition.get(i).getItemId()));
+		}
+						
 		model.addAttribute("categoryList", categoryList);
+		
 		System.out.println(listByCondition);
 		//model.addAttribute("selectAllItemListByCondition", listByCondition);
 		model.addAttribute("itemList", listByCondition);
+		model.addAttribute("imageList",imageList);
 		return "main.tiles";
 	}
 	
