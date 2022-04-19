@@ -63,7 +63,7 @@ public class ItemServiceImpl implements ItemService {
 		
 		
 // 		String filepath=request.getServletContext().getRealPath("assets/upload/");
- 		String filepath="E:/projectjava/potato_market/final-project/src/main/resources/static/assets/upload/";
+ 		String filepath="E:/projectjava/SpringBoot-PPotatoMarket/src/main/resources/static/assets/upload/";
 	 
 		//File OriginName
 		String originalFile;
