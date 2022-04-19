@@ -67,7 +67,10 @@ where us.USER_ID=au.USERNAME
 drop table AUTHORITIES;
 select count(*) from user;
 
-
+select * from AUTHORITIES;
+update AUTHORITIES
+set AUTHORITY ='ROLE_ADMIN'
+WHERE USERNAME='harry';
 
 --아이디 중복체크
 select count(*) from user where user_id='spring';
