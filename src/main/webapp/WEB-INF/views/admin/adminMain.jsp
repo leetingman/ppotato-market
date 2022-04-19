@@ -31,7 +31,7 @@
 	<div id="myNav" class="overlay">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 		<div class="overlay-content">
-			<a href="userManagement">관리자</a> <a href="categoryManagement">카테고리</a>
+			<a href="userManagement">USER_MANAGEMENT</a> <a href="categoryManagement">CATEGORY</a>
 			<a href="faqManagement">FAQ</a>
 		</div>
 	</div>

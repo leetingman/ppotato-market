@@ -93,7 +93,7 @@
 										<!--end meta-->
 										<div class="description" style="height: 9rem;">
 											<p style="width: 100%;">
-												<i class="fa fa-question"></i> ${l.communityContent }
+												 ${l.communityContent }
 											</p>
 										</div>
 										<!--end description-->

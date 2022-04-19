@@ -137,7 +137,7 @@ tr:nth-child(even) {
 	<script>
 		$(document).ready(function() {
 			$(".deleteBtn").click(function() {
-				if (!confirm("Are you sure you want to delete your post? You can't undo this")) {
+				if (!confirm("Are you sure you want to delete FAQ? You can't undo this")) {
 					location.href = "#";
 				} else {
 					$("#deleteForm").submit();
