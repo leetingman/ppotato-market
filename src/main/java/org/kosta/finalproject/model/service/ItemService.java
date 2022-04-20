@@ -27,4 +27,5 @@ public interface ItemService {
 	public List<ItemVO> selectAllItemListByCondition(ItemVO itemVO);
 	public void itemHitUpdate(int itemId);
 	public List<ItemVO> getUserItemListByUserId(String userId,int itemId);
+	public List<ItemVO> selectItemListByUserID(String userId);
 }

@@ -1,15 +1,21 @@
 package org.kosta.finalproject.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.kosta.finalproject.model.domain.ImageVO;
+import org.kosta.finalproject.model.domain.ItemVO;
 import org.kosta.finalproject.model.domain.UserVO;
+import org.kosta.finalproject.model.service.ItemService;
 import org.kosta.finalproject.model.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,7 +27,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 public class UserController {
 	@Autowired
 	private UserService userService;
-
+	@Autowired
+	private ItemService itemService;
 	@RequestMapping("guest/registerForm")
 	public String registerForm() {
 		return "user/registerForm";
@@ -86,9 +93,21 @@ public class UserController {
 	public String loginFail() {
 		return "user/login_fail";
 	}
-
+	// profile user 정보 넘김
 	@RequestMapping("profile")
-	public String profile() {
+	public String profile(String userId,Model model) {
+		UserVO userVO=
+		userService.findUserById(userId);
+		List<ItemVO> itemList=itemService.selectItemListByUserID(userId);
+		List<ImageVO> imageList=new ArrayList<ImageVO>();
+		for(int i=0;i<itemList.size();i++) {
+			imageList.add(itemService.findItemImageVOByItemId(itemList.get(i).getItemId()));
+		}
+		System.out.println(itemList);
+		model.addAttribute("user", userVO);
+		model.addAttribute("items",itemList);
+		model.addAttribute("imageList",imageList);
+		
 		return "user/profile.tiles";
 	}
 

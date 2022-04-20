@@ -194,6 +194,17 @@
 		resultType="org.kosta.finalproject.model.domain.ImageVO">
 		SELECT * FROM IMAGE WHERE ITEM_ID=#{itemId} ORDER BY IMAGE_ID ASC LIMIT 1;
 	</select>
+	
+	<!-- profile용 -->
+	<select id="selectItemListByUserID" 
+		resultType="org.kosta.finalproject.model.domain.ItemVO">
+		SELECT
+		*
+		FROM
+		ITEM
+		WHERE
+		USER_ID= #{userId}
+	</select>
 
 
 </mapper>

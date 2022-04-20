@@ -17,7 +17,7 @@
 				<li><a href="adminHome"> <i class="fa fa-wrench"></i>Admin page</a></li>
 				</sec:authorize>
 				 <sec:authorize access="hasRole('ROLE_MEMBER')">
-					<li><a href="profile"> <i class="fa fa-heart"></i>potato</a></li>
+					<li><a href="profile?userId=${headeruserId }"> <i class="fa fa-heart"></i>potato</a></li>
 					</sec:authorize>
 			<script type="text/javascript">
 					$(document).ready(function() {
