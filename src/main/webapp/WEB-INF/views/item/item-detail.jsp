@@ -55,7 +55,7 @@
 							<h1> <!-- &nbsp&nbsp  -->${itemDetail.itemTitle}</h1>
 						</div>
 						<div class="float-right float-xs-none price">
-							<div class="number">${itemDetail.itemPrice}원</div>
+							<div class="number">${itemDetail.itemPrice}$</div>
 						</div>
 					</div>
 					<!--end container-->
