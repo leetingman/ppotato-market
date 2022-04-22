@@ -18,6 +18,8 @@
 <link rel="stylesheet" href="assets/css/selectize.css" type="text/css">
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="stylesheet" href="assets/css/user.css">
+<%@taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <sec:authentication property="principal.userId" var="userId" />
 
 <title>Craigs - Easy Buy & Sell Listing HTML Template</title>

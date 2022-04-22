@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
+	<sec:authentication property="principal.userId" var="headeruserId" />
+	
 	<nav class="nav flex-column side-nav">
 		<a class="nav-link active icon" href="profile"> <i
 			class="fa fa-user"></i>Your profiles
-		</a> <a class="nav-link icon" href="soldItems"> <i class="fa fa-check"></i>Your Lists
+		</a> <a class="nav-link icon" href="soldItems?userId=${headeruserId }"> <i class="fa fa-check"></i>Your Lists
 		</a> <a class="nav-link icon" href="buyItems"> <i
 			class="fa fa-shopping-cart"></i>Your Orders
 		</a> <a class="nav-link icon" href="bookmarks"> <i class="fa fa-heart"></i>Your Wishlist

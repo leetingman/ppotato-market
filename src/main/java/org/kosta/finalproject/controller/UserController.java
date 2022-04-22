@@ -29,6 +29,7 @@ public class UserController {
 	private UserService userService;
 	@Autowired
 	private ItemService itemService;
+
 	@RequestMapping("guest/registerForm")
 	public String registerForm() {
 		return "user/registerForm";
@@ -55,8 +56,8 @@ public class UserController {
 	public String register(UserVO userVO, HttpServletRequest request, @RequestParam("user_image") MultipartFile imgfile)
 			throws IllegalStateException, IOException {
 //		System.out.println(imgfile.getSize());
-		String savedname=null;
-		if(imgfile.getSize()>1) {
+		String savedname = null;
+		if (imgfile.getSize() > 1) {
 			savedname = userService.uploadSingleImage(userVO, request, imgfile);
 		}
 		userVO.setUserImage(savedname);
@@ -93,26 +94,36 @@ public class UserController {
 	public String loginFail() {
 		return "user/login_fail";
 	}
+
 	// profile user 정보 넘김
 	@RequestMapping("profile")
-	public String profile(String userId,Model model) {
-		UserVO userVO=
-		userService.findUserById(userId);
-		List<ItemVO> itemList=itemService.selectItemListByUserID(userId);
-		List<ImageVO> imageList=new ArrayList<ImageVO>();
-		for(int i=0;i<itemList.size();i++) {
+	public String profile(String userId, Model model) {
+		UserVO userVO = userService.findUserById(userId);
+		List<ItemVO> itemList = itemService.selectItemListByUserID(userId);
+		List<ImageVO> imageList = new ArrayList<ImageVO>();
+		for (int i = 0; i < itemList.size(); i++) {
 			imageList.add(itemService.findItemImageVOByItemId(itemList.get(i).getItemId()));
 		}
 		System.out.println(itemList);
 		model.addAttribute("user", userVO);
-		model.addAttribute("items",itemList);
-		model.addAttribute("imageList",imageList);
-		
+		model.addAttribute("items", itemList);
+		model.addAttribute("imageList", imageList);
+
 		return "user/profile.tiles";
 	}
 
 	@RequestMapping("soldItems")
-	public String soldItems() {
+	public String soldItems(String userId, Model model) {
+		UserVO userVO = userService.findUserById(userId);
+		List<ItemVO> itemList = itemService.selectItemListByUserID(userId);
+		List<ImageVO> imageList = new ArrayList<ImageVO>();
+		for (int i = 0; i < itemList.size(); i++) {
+			imageList.add(itemService.findItemImageVOByItemId(itemList.get(i).getItemId()));
+		}
+		model.addAttribute("user", userVO);
+		model.addAttribute("items", itemList);
+		model.addAttribute("imageList", imageList);
+
 		return "user/sold-items.tiles";
 	}
 
@@ -151,7 +162,7 @@ public class UserController {
 		uvo.setUserEmail(userVO.getUserEmail());
 		userService.updateUserPartPET(userVO);
 
-		if (imgfile.getSize()>1) {
+		if (imgfile.getSize() > 1) {
 //			System.out.println("img update");
 			userService.updateUploadSingleImage(userVO, request, imgfile);
 		}
@@ -168,7 +179,6 @@ public class UserController {
 
 		return "user/update_result";
 	}
-
 
 	// 회원정보수정 - 현재위치를 받아와서 수정할 수 있도록 한다
 	@PostMapping("profileAddressUpdate")
