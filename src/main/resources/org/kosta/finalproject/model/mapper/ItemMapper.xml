@@ -205,6 +205,13 @@
 		WHERE
 		USER_ID= #{userId}
 	</select>
+	<!-- seller sold-out Item list -->
+	<select id="selectSoldItemListByUserID" 
+		resultType="org.kosta.finalproject.model.domain.ItemVO">
+		SELECT * FROM ITEM WHERE
+		USER_ID= #{userId} AND ITEM_STATUS='SOLD';
+		
+	</select>
 
 
 </mapper>

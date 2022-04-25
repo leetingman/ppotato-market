@@ -28,4 +28,5 @@ public interface ItemService {
 	public void itemHitUpdate(int itemId);
 	public List<ItemVO> getUserItemListByUserId(String userId,int itemId);
 	public List<ItemVO> selectItemListByUserID(String userId);
+	public List<ItemVO> selectSoldItemListByUserID(String userId);
 }

@@ -115,7 +115,7 @@ public class UserController {
 	@RequestMapping("soldItems")
 	public String soldItems(String userId, Model model) {
 		UserVO userVO = userService.findUserById(userId);
-		List<ItemVO> itemList = itemService.selectItemListByUserID(userId);
+		List<ItemVO> itemList = itemService.selectSoldItemListByUserID(userId);
 		List<ImageVO> imageList = new ArrayList<ImageVO>();
 		for (int i = 0; i < itemList.size(); i++) {
 			imageList.add(itemService.findItemImageVOByItemId(itemList.get(i).getItemId()));
@@ -123,7 +123,6 @@ public class UserController {
 		model.addAttribute("user", userVO);
 		model.addAttribute("items", itemList);
 		model.addAttribute("imageList", imageList);
-
 		return "user/sold-items.tiles";
 	}
 

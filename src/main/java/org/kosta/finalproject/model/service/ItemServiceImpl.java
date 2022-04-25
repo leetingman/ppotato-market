@@ -148,4 +148,10 @@ public class ItemServiceImpl implements ItemService {
 		return itemMapper.selectItemListByUserID(userId);
 	}
 
+	@Override
+	public List<ItemVO> selectSoldItemListByUserID(String userId) {
+		// TODO Auto-generated method stub		
+		return itemMapper.selectSoldItemListByUserID(userId);
+	}
+
 }

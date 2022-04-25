@@ -229,10 +229,8 @@
 							<div
 								class="items list compact grid-xl-3-items grid-lg-2-items grid-md-2-items">
 								<!--   <div class="item item-sold"> -->
-								<!-- 아이템 팔린것만 -->
-							
-									<c:choose>
-									
+								<!-- 아이템 팔린것만 -->							
+									<c:choose>									
 										<c:when test="${not empty items}">
 											<c:forEach items="${items}" var="item" varStatus="status">
 													<div class="item">
@@ -248,13 +246,12 @@
 														<h3>
 															<a href="single-listing-1.html" class="title">${item.itemTitle }</a>
 														</h3>
-														<a href="single-listing-1.html"
-															class="image-wrapper background-image"> 
-															<img  alt="" src="assets/upload/${imageList[status.index].imageName}">
-														</a>
+														 
+															<img class="image-wrapper background-image" alt="" src="assets/upload/${imageList[status.index].imageName}">
+														
 													</div>
 													<!--end image-->
-													<h4>
+													<h4>													
 														<div style="color: black; padding-top: 10px">
 															<i class="fa fa-map-marker"></i> ${user.userAddress }
 														</div>
