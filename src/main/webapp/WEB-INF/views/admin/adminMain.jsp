@@ -90,94 +90,7 @@
 			<div class="container">
 				<!--============ Items ==========================================================================-->
 				<div class="authors masonry items grid-xl-5-items grid-lg-5-items grid-md-5-items" style="margin-left: -2rem; margin-right: -3.5rem">
-					<div class="item author" style="padding-right:1rem; padding-left:1rem;">
-						<div class="wrapper">
-							<div class="image">
-							 <img src="assets/img/용은2.png" alt="" style="height:250px; width:200px; margin:5px;">
-							</div>
-							<!--end image-->
-							<div class="additional-info">
-									<p style="height:10px;overflow:visible;">권용은</p>
-								<ul>
-									<li style="padding-bottom: 10px;">
-									<figure>Main developer </figure><aside><a>&nbsp</a></aside>
-										<aside>
-											<a href="https://github.com/jenkwon92">https://github.com/jenkwon92</a>
-										</aside>
-									</li>
-								</ul>
-							</div>
-							<!--end addition-info-->
-						</div>
-					</div>
-					<!--============ End Item===============-->
-					
-						<div class="item author" style="padding-right:1rem; padding-left:1rem;">
-						<div class="wrapper">
-							<div class="image">
-							 <img src="assets/img/정훈.png" alt="" style="height:250px; width:200px; margin:5px;">
-							</div>
-							<!--end image-->
-							<div class="additional-info">
-									<p style="height:10px;overflow:visible;">김정훈</p>
-								<ul>
-									<li style="padding-bottom: 10px;">
-									<figure>Main developer </figure><aside><a>&nbsp</a></aside>
-										<aside>
-											<a href="https://github.com/anngdung2">https://github.com/anngdung2</a>
-										</aside>
-									</li>
-								</ul>
-							</div>
-							<!--end addition-info-->
-						</div>
-					</div>
-					<!--============ End Item===============-->
-					
-						<div class="item author" style="padding-right:1rem; padding-left:1rem;">
-						<div class="wrapper">
-							<div class="image">
-							 <img src="assets/img/건홍.PNG" alt="" style="height:250px; width:200px; margin:5px;">
-							</div>
-							<!--end image-->
-							<div class="additional-info">
-									<p style="height:10px;overflow:visible;">민건홍</p>
-								<ul>
-									<li style="padding-bottom: 10px;">
-									<figure>Main developer </figure><aside><a>&nbsp</a></aside>
-										<aside>
-											<a href="https://github.com/Gunhong">https://github.com/Gunhong</a>
-										</aside>
-									</li>
-								</ul>
-							</div>
-							<!--end addition-info-->
-						</div>
-					</div>
-					<!--============ End Item===============-->
-					
-						<div class="item author" style="padding-right:1rem; padding-left:1rem;">
-						<div class="wrapper">
-							<div class="image">
-							 <img src="assets/img/기랑.PNG" alt="" style="height:250px; width:200px; margin:5px;">
-							</div>
-							<!--end image-->
-							<div class="additional-info">
-									<p style="height:10px;overflow:visible;">박기랑</p>
-								<ul>
-									<li style="padding-bottom: 10px;">
-									<figure>Main developer </figure><aside><a>&nbsp</a></aside>
-										<aside>
-											<a href="https://github.com/cecyrang">https://github.com/cecyrang</a>
-										</aside>
-									</li>
-								</ul>
-							</div>
-							<!--end addition-info-->
-						</div>
-					</div>
-					<!--============ End Item===============-->
-					
+						
 						<div class="item author" style="padding-right:1rem; padding-left:1rem;">
 						<div class="wrapper">
 							<div class="image">
@@ -199,6 +112,95 @@
 						</div>
 					</div>
 					<!--============ End Item===============-->
+					
+					<div class="item author" style="padding-right:1rem; padding-left:1rem;">
+						<div class="wrapper">
+							<div class="image">
+							 <img src="assets/img/memte.jpg" alt="" style="height:250px; width:200px; margin:5px;">
+							</div>
+							<!--end image-->
+							<div class="additional-info">
+									<p style="height:10px;overflow:visible;">manager</p>
+								<ul>
+									<li style="padding-bottom: 10px;">
+									<figure>Main developer </figure><aside><a>&nbsp</a></aside>
+										<aside>
+											<a href="https://github.com/jenkwon92">https://github.com/jenkwon92</a>
+										</aside>
+									</li>
+								</ul>
+							</div>
+							<!--end addition-info-->
+						</div>
+					</div>
+					<!--============ End Item===============-->
+					
+						<div class="item author" style="padding-right:1rem; padding-left:1rem;">
+						<div class="wrapper">
+							<div class="image">
+							 <img src="assets/img/memte.jpg" alt="" style="height:250px; width:200px; margin:5px;">
+							</div>
+							<!--end image-->
+							<div class="additional-info">
+									<p style="height:10px;overflow:visible;">manager</p>
+								<ul>
+									<li style="padding-bottom: 10px;">
+									<figure>Main developer </figure><aside><a>&nbsp</a></aside>
+										<aside>
+											<a href="https://github.com/anngdung2">https://github.com/anngdung2</a>
+										</aside>
+									</li>
+								</ul>
+							</div>
+							<!--end addition-info-->
+						</div>
+					</div>
+					<!--============ End Item===============-->
+					
+						<div class="item author" style="padding-right:1rem; padding-left:1rem;">
+						<div class="wrapper">
+							<div class="image">
+							 <img src="assets/img/memte.jpg" alt="" style="height:250px; width:200px; margin:5px;">
+							</div>
+							<!--end image-->
+							<div class="additional-info">
+									<p style="height:10px;overflow:visible;">manager</p>
+								<ul>
+									<li style="padding-bottom: 10px;">
+									<figure>Main developer </figure><aside><a>&nbsp</a></aside>
+										<aside>
+											<a href="https://github.com/Gunhong">https://github.com/Gunhong</a>
+										</aside>
+									</li>
+								</ul>
+							</div>
+							<!--end addition-info-->
+						</div>
+					</div>
+					<!--============ End Item===============-->
+					
+						<div class="item author" style="padding-right:1rem; padding-left:1rem;">
+						<div class="wrapper">
+							<div class="image">
+							 <img src="assets/img/memte.jpg" alt="" style="height:250px; width:200px; margin:5px;">
+							</div>
+							<!--end image-->
+							<div class="additional-info">
+									<p style="height:10px;overflow:visible;">manager</p>
+								<ul>
+									<li style="padding-bottom: 10px;">
+									<figure>Main developer </figure><aside><a>&nbsp</a></aside>
+										<aside>
+											<a href="https://github.com/cecyrang">https://github.com/cecyrang</a>
+										</aside>
+									</li>
+								</ul>
+							</div>
+							<!--end addition-info-->
+						</div>
+					</div>
+					<!--============ End Item===============-->
+				
 				</div>
 				<!--============ End Items ======================================================================-->
 			</div>
