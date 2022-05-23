@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.kosta.finalproject.model.domain.CategoryVO;
 import org.kosta.finalproject.model.domain.ImageVO;
 import org.kosta.finalproject.model.domain.ItemVO;
+import org.kosta.finalproject.model.domain.UserVO;
 import org.kosta.finalproject.model.service.ChattingService;
 import org.kosta.finalproject.model.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -147,6 +150,17 @@ public class ItemController {
 		model.addAttribute("imageList",imageList);
 		return "main.tiles";
 	}
+	
+	@RequestMapping(value = "addCart", method = { RequestMethod.GET })
+	public void addCart(@RequestParam("userId") String userId,@RequestParam("itemId")int itemId) {
+		System.out.println("data:"+userId+itemId);
+		itemService.insertCart(userId,itemId);
+		
+	}
+	
+
+	
+	
 	
 //	//중고물품 게시물 조건별로 정렬하기
 //	@GetMapping("sortAllItemListByCondtion")

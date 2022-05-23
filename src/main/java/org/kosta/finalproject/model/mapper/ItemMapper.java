@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.kosta.finalproject.model.domain.ImageVO;
 import org.kosta.finalproject.model.domain.CategoryVO;
 import org.kosta.finalproject.model.domain.ItemVO;
+import org.kosta.finalproject.model.domain.ShoppingCartVO;
 
 @Mapper
 public interface ItemMapper {
@@ -25,6 +26,11 @@ public interface ItemMapper {
 	public List<ItemVO> getUserItemListByUserId(String userId, int itemId);
 	public List<ItemVO> selectItemListByUserID(String userId);
 	public List<ItemVO> selectSoldItemListByUserID(String userId);
+	public List<Integer> selectCartListByUserId(String userId);
+	public void insertCart(String userId, int itemId);
+	public int findOneCart(String userId, int itemId);
+	public void deleteCart(String userId, int itemId);
+ 
 }
 
 

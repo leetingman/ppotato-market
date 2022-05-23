@@ -11,6 +11,7 @@ import javax.annotation.Resource;
 import org.kosta.finalproject.model.domain.ImageVO;
 import org.kosta.finalproject.model.domain.CategoryVO;
 import org.kosta.finalproject.model.domain.ItemVO;
+import org.kosta.finalproject.model.domain.ShoppingCartVO;
 import org.kosta.finalproject.model.mapper.ItemMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -111,9 +112,10 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	public ImageVO findItemImageVOByItemId(int itemId) {
 		ImageVO imageVO = new ImageVO();
-
+		
 		imageVO = itemMapper.findItemImageVOByItemId(itemId);
 		if (imageVO == null) {
+			System.out.println("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
 			imageVO = new ImageVO(0, "루피감자.png");
 		}
 //		System.out.println(imageVO);
@@ -153,5 +155,41 @@ public class ItemServiceImpl implements ItemService {
 		// TODO Auto-generated method stub		
 		return itemMapper.selectSoldItemListByUserID(userId);
 	}
+	
+	//shopping cart   need a refactoring
+	@Override
+	public List<ItemVO> selectCartList(String userId)
+	{
+		//itemId찾아서 item info 출력
+		List<Integer> list=itemMapper.selectCartListByUserId(userId);
+		List<ItemVO> itemList=new ArrayList<ItemVO>();
+		
+		if(list.size()>0) {
+			for(int i=0;i<list.size();i++) {
+				
+				itemList.add(itemMapper.selectItemByItemId(list.get(i)));
+			}
+		}
+		
+		return itemList;
+	}
+
+	@Override
+	public void insertCart(String userId, int itemId) {
+		if(itemMapper.findOneCart(userId,itemId)== 0) {
+		itemMapper.insertCart(userId,itemId);
+		}
+		
+		
+	}
+
+	@Override
+	public void deleteCart(String userId, int itemId) {
+		// TODO Auto-generated method stub
+		System.out.println("아이템카트 삭제"+userId+itemId);
+		itemMapper.deleteCart(userId,itemId);
+		
+	}
+	
 
 }

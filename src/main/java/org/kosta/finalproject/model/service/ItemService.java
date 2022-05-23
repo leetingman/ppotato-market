@@ -6,6 +6,7 @@ import java.util.List;
 import org.kosta.finalproject.model.domain.ImageVO;
 import org.kosta.finalproject.model.domain.CategoryVO;
 import org.kosta.finalproject.model.domain.ItemVO;
+import org.kosta.finalproject.model.domain.ShoppingCartVO;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -29,4 +30,7 @@ public interface ItemService {
 	public List<ItemVO> getUserItemListByUserId(String userId,int itemId);
 	public List<ItemVO> selectItemListByUserID(String userId);
 	public List<ItemVO> selectSoldItemListByUserID(String userId);
+	public List<ItemVO> selectCartList(String userId);
+	public void insertCart(String userId,int itemId);
+	public void deleteCart(String userId,int itemId);
 }
