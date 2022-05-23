@@ -144,6 +144,11 @@ public class ChatController {
 
 			itemchatlist.add(itemService
 					.selectItemByItemId(chattingService.findChatRoomVOIdByChatRoomId(Long.parseLong(key)).getItemId()));
+			for(int i=0;i<itemchatlist.size();i++) {
+				if(itemchatlist.get(i)==null) {
+					itemchatlist.remove(i);
+				}
+			}
 			chatmessagelist.add(new ChatMessage(Long.parseLong(key), content, updateAt));
 		}
 		System.out.println("itemlist" + itemchatlist);
@@ -260,7 +265,11 @@ public class ChatController {
 			// get
 			itemchatlist.add(itemService
 					.selectItemByItemId(chattingService.findChatRoomVOIdByChatRoomId(Long.parseLong(key)).getItemId()));
-
+			for(int i=0;i<itemchatlist.size();i++) {
+				if(itemchatlist.get(i)==null) {
+					itemchatlist.remove(i);
+				}
+			}
 //          itemchatmap.put(key, itemService.selectItemByItemId(
 //          chattingService.findItemIdByChatRoomId(Long.parseLong(key)).getItemId()
 			System.out.println("itemlist" + itemchatlist);
@@ -301,8 +310,9 @@ public class ChatController {
 		 */
 		// itemchatlist 에대한 아이템
 		for (int i = 0; i < itemchatlist.size(); i++) {
+			System.out.println("wwwwwwwwwwwwwwwwwwwwwwww");
 			itemimglist.add(itemService.findItemImageVOByItemId(itemchatlist.get(i).getItemId()).getImageName());
-
+			
 			if (itemchatlist.get(i).getUserVO().getUserId().equals(userId)) {
 				// 상대방 UserVO 에 대한 userId 찾기
 				userimglist.add(userService

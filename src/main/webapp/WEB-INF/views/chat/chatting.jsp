@@ -69,7 +69,7 @@
 									</li>
 								</ul>
 							</div>
-							<!-- 작업드가자~ -->
+							<!-- 작업드가자~  채팅 목록-->
 							<div class="messaging__content">
 								<ul class="messaging__persons-list">
 									 
