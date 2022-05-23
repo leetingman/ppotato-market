@@ -149,6 +149,12 @@
 								<input type="hidden" name="itemId" value="${itemDetail.itemId}" >
 								<button type="submit" class="btn btn-primary width-100">chat</button>
 							</form>
+							<form id="cartForm" >
+								<input type="hidden" name="userId" value="${userId}" > 						 
+								<input type="hidden" name="itemId" value="${itemDetail.itemId}" >
+								<button id="cbtn" type="button" class="btn btn-primary width-100">add shopping cart</button>
+							</form>
+							
 							</c:when>
 							<c:otherwise>
 							<!-- 수정하기 -->
@@ -235,5 +241,26 @@
 		<!--end content-->
 	</div>
 	<!--end page-->
+<script>
+$(function(){	
+	$('#cbtn').on("click",function () {	
+	alert('success');  
+	$.ajax({
+   	 url: 'addCart',
+   	 type: 'get',
+     data: $('#cartForm').serialize()
+    	,
+    	success: function (data) {
+            alert('success');
+        }
+	}
+	)
+	}
+	)
+});
+
+
+</script>
+	
 </body>
 </html>

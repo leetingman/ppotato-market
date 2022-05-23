@@ -212,6 +212,31 @@
 		USER_ID= #{userId} AND ITEM_STATUS='SOLD';
 		
 	</select>
-
+	
+	<insert id="insertCart"
+		parameterType="org.kosta.finalproject.model.domain.ShoppingCartVO">
+		INSERT INTO ITEM_CART(USER_ID,ITEM_ID) VALUES(
+		#{userId},#{itemId}
+		)
+	</insert>
+	
+	<select id="selectCartListByUserId"
+		resultType="int">
+		SELECT ITEM_ID
+		FROM ITEM_CART
+		WHERE USER_ID=#{userId}
+	</select>
+	
+	<select id="findOneCart"
+		resultType="int">
+		SELECT COUNT(ITEM_ID)
+		FROM ITEM_CART
+		WHERE USER_ID=#{userId} AND ITEM_ID=#{itemId}
+	</select>
+	
+	<delete id="deleteCart" parameterType="ShoppingCartVO">
+		DELETE FROM ITEM_CART WHERE ITEM_ID=#{itemId} AND USER_ID=#{userId};
+	</delete>
+	
 
 </mapper>
