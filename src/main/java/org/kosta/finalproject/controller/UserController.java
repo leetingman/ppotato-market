@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.kosta.finalproject.model.domain.ImageVO;
 import org.kosta.finalproject.model.domain.ItemVO;
+import org.kosta.finalproject.model.domain.ShoppingCartVO;
 import org.kosta.finalproject.model.domain.UserVO;
 import org.kosta.finalproject.model.service.ItemService;
 import org.kosta.finalproject.model.service.UserService;
@@ -17,6 +18,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -130,12 +132,7 @@ public class UserController {
 	public String buyItems() {
 		return "user/buy-items.tiles";
 	}
-
-	@RequestMapping("bookmarks")
-	public String bookmarks() {
-		return "user/bookmarks.tiles";
-	}
-
+ 
 	@RequestMapping("profileUpdateForm")
 	public String profileUpdateForm() {
 		return "user/profile-updateForm.tiles";
@@ -191,6 +188,23 @@ public class UserController {
 		return "user/update_result";
 	}
 
+	 
+	@RequestMapping("bookmarks")
+	public String bookmarks(String userId, Model model) {
+		List<ItemVO> list =new ArrayList<ItemVO>();
+		list=
+		itemService.selectCartList(userId);
+		model.addAttribute("itemList",list);
+		return "user/bookmarks.tiles";
+	}
+	
+	@PostMapping("deleteCart")
+	@ResponseBody
+	public ItemVO deleteCart(String userId,int itemId) {
+		
+		itemService.deleteCart(userId,itemId);
+		return itemService.selectItemByItemId(itemId);
+	}
 	// 회원수정에서 비밀번호 비교!!!
 	// if (!passwordEncoder.matches(password, member.getPassword()))
 	// throw new BadCredentialsException("비밀번호가 일치하지 않습니다");
