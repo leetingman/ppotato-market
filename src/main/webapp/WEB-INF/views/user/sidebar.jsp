@@ -6,12 +6,10 @@
 	<sec:authentication property="principal.userId" var="headeruserId" />
 	
 	<nav class="nav flex-column side-nav">
-		<a class="nav-link active icon" href="profile"> <i
+		<a class="nav-link active icon" href="profile?userId=${headeruserId }"> <i
 			class="fa fa-user"></i>Your profiles
-		</a> <a class="nav-link icon" href="soldItems?userId=${headeruserId }"> <i class="fa fa-check"></i>Your Lists
-		</a> <a class="nav-link icon" href="buyItems"> <i
-			class="fa fa-shopping-cart"></i>Your Orders
-		</a> <a class="nav-link icon" href="bookmarks"> <i class="fa fa-heart"></i>Your Wishlist
+		</a> <a class="nav-link icon" href="soldItems?userId=${headeruserId }"> <i class="fa fa-check"></i>Your Solded Lists
+		</a>  <a class="nav-link icon" href="bookmarks?userId=${headeruserId }"> <i class="fa fa-heart"></i>Your Wishlist
 		</a> <a class="nav-link icon" href="profileUpdateForm"> <i class="fa fa-child"></i>Edit Profiles
 		</a> <a class="nav-link icon" href="addressUpdateForm"> <i
 			class="fa fa-child"></i>set your Location

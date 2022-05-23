@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
+<sec:authentication property="principal.userId" var="userId" />
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,7 +11,40 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="ThemeStarz">
+<style>
+#column1 {
+	float: left;
+	width: 80%;
+	padding: 5px;
+}
 
+#column2 {
+	float: left;
+	width: 20%;
+	padding: 5px;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+	border: 1px solid #ddd;
+	background-color: white;
+	table-layout:fixed
+}
+
+th, td {
+	text-align: left;
+	padding: 16px;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+</style>
 <link
 	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Varela+Round"
 	rel="stylesheet">
@@ -200,94 +237,32 @@
 						<!--end col-md-3-->
 						<div class="col-md-9">
 							<!--============ Section Title===================================================================-->
-							<div class="section-title clearfix">
-								<div class="float-left float-xs-none">
-									<label class="mr-3 align-text-bottom">Sort by: </label> <select
-										name="sorting" id="sorting" class="small width-200px"
-										data-placeholder="Default Sorting">
-										<option value="">Default Sorting</option>
-										<option value="1">Newest First</option>
-										<option value="2">Oldest First</option>
-										<option value="3">Lowest Price First</option>
-										<option value="4">Highest Price First</option>
-									</select>
-
-								</div>
-								<div class="float-right d-xs-none thumbnail-toggle">
-									<a href="#" class="change-class" data-change-from-class="list"
-										data-change-to-class="grid" data-parent-class="items"> <i
-										class="fa fa-th"></i>
-									</a> <a href="#" class="change-class active"
-										data-change-from-class="grid" data-change-to-class="list"
-										data-parent-class="items"> <i class="fa fa-th-list"></i>
-									</a>
-								</div>
-							</div>
-							<!--============ Items ==========================================================================-->
-							<div
-								class="items list compact grid-xl-3-items grid-lg-3-items grid-md-2-items">
-								<div class="item">
-									<div class="ribbon-vertical">
-										<i class="fa fa-star"></i>
-									</div>
-									<!--end ribbon-vertical-->
-									<div class="wrapper">
-										<div class="image">
-											<h3>
-												<a href="#" class="tag category">Home & Decor</a> <a
-													href="single-listing-1.html" class="title">Furniture
-													for sale</a>
-											</h3>
-											<a href="single-listing-1.html"
-												class="image-wrapper background-image"> <img
-												src="assets/img/image-01.jpg" alt="">
-											</a>
-										</div>
-										<!--end image-->
-										<h4 class="location">
-											<a href="#">Manhattan, NY</a>
-										</h4>
-										<div class="price">$80</div>
-										<div class="meta">
-											<figure>
-												<i class="fa fa-calendar-o"></i>02.05.2017
-											</figure>
-											<figure>
-												<a href="#"> <i class="fa fa-user"></i>Jane Doe
-												</a>
-											</figure>
-										</div>
-										<!--end meta-->
-										<a href="single-listing-1.html"
-											class="detail text-caps underline">Detail</a>
-									</div>
-								</div>
-								<!--end item-->
-							</div>
-							<!--end items-->
-							<!--============ End Items ==============================================================-->
-							<div class="page-pagination">
-								<nav aria-label="Pagination">
-									<ul class="pagination">
-										<li class="page-item"><a class="page-link" href="#"
-											aria-label="Previous"> <span aria-hidden="true"> <i
-													class="fa fa-chevron-left"></i>
-											</span> <span class="sr-only">Previous</span>
-										</a></li>
-										<li class="page-item active"><a class="page-link"
-											href="#">1</a></li>
-										<li class="page-item"><a class="page-link" href="#">2</a>
-										</li>
-										<li class="page-item"><a class="page-link" href="#">3</a>
-										</li>
-										<li class="page-item"><a class="page-link" href="#"
-											aria-label="Next"> <span aria-hidden="true"> <i
-													class="fa fa-chevron-right"></i>
-											</span> <span class="sr-only">Next</span>
-										</a></li>
-									</ul>
-								</nav>
-							</div>
+					 			
+							<label for="admin" class="col-form-label">Shopping Cart List</label>
+							<section>
+								<table >
+									<thead>
+										<tr>
+											<th>item name</th>
+											<th>item Status</th>
+											<th>item price</th>
+											<th style="80px;text-align:center;">Delete</th>
+										</tr>
+									</thead>
+									<tbody  id="userTable">
+										<c:forEach var="l" items="${itemList }" varStatus="status">
+										<tr id="${l.itemId}">
+											<td>${l.itemTitle}</td>
+											<td>${l.itemStatus}</td>
+											<td>${l.itemPrice }</td>
+											<td style="80px;text-align:center;"class="deleteTd" data-user="${userId}" data-name="${l.itemId}"><i class='fa fa-ban' ></i></td>
+										</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</section>
+						
+								 
 							<!--end page-pagination-->
 						</div>
 						<!--end col-md-9-->
@@ -372,5 +347,37 @@
 		<!--end footer-->
 	</div>
 	<!--end page-->
+	
+	
+<script>
+$(function(){
+	$(".deleteTd").click(function() {
+		
+		let itemIda=$(this).data("name");
+		let userIda=$(this).data("user");
+		console.log(itemIda+userIda);
+		var csrfHeaderName = "${_csrf.headerName}";
+		var csrfTokenValue = "${_csrf.token}";
+		
+		$.ajax({
+			type:"post",
+			url:"deleteCart",
+			data:{'itemId' : itemIda,
+			'userId' : userIda}
+			,beforeSend: function(xhr){
+				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue)
+			},
+			success:function(result){
+				if(!confirm("Are you sure you want to delete item?")){
+					return false;
+				}else{
+					alert("delected");
+					$("#"+result.itemId).remove();
+				}
+			}//success callback
+		});//ajax
+	}); //click
+}); //ready
+</script>	
 </body>
 </html>
