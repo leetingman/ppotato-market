@@ -56,7 +56,7 @@ public class MemberAuthenticationProvider implements AuthenticationProvider{
 		String id = authentication.getName();//사용자가 로그인시 입력한 ID 반환 		
 		UserVO user = userService.findUserById(id);
 		if(user == null){
-			throw new UsernameNotFoundException("Incorrect username or password");
+			throw new UsernameNotFoundException("username dosen't exist");
 		}
 		String password=(String)authentication.getCredentials();//사용자가 입력한 패스워드 반환 
 		//3.패스워드 비교
