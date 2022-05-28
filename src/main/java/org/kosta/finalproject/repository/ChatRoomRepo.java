@@ -1,10 +1,19 @@
 package org.kosta.finalproject.repository;
 
 import java.util.List;
-
+import java.util.Optional;
 import org.kosta.finalproject.model.domain.ChatRoomVO;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
+
+/**
+	Refactoring ver 1.1 
+	1. method return Optional data type ,Occasional IncorrectResultSizeDataAccessException
+	2. Service class T get() Optional 객체에 저장된 값을 반환함.	
+	done : x
+*/
+
+
 
 public interface ChatRoomRepo  extends MongoRepository<ChatRoomVO,String>{
 @Query("{'userId': ?0, 'itemId': ?1}")   

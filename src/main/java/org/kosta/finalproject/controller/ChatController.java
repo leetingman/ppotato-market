@@ -283,7 +283,7 @@ public class ChatController {
 		}
 		// sort 한번 하고 가죠
 		System.out.println("sort전" + chatmessagelist);
-
+		//Collection.sort() 로변경 @Override compartTo
 		SimpleDateFormat sf = new SimpleDateFormat("YYYY-MM-DD hh:mm:ss");
 		System.out.println(chatmessagelist.size() + "  챗리스트 사이즈");
 		for (int i = 0; i < chatmessagelist.size(); i++) {
@@ -310,7 +310,6 @@ public class ChatController {
 		 */
 		// itemchatlist 에대한 아이템
 		for (int i = 0; i < itemchatlist.size(); i++) {
-			System.out.println("wwwwwwwwwwwwwwwwwwwwwwww");
 			itemimglist.add(itemService.findItemImageVOByItemId(itemchatlist.get(i).getItemId()).getImageName());
 			
 			if (itemchatlist.get(i).getUserVO().getUserId().equals(userId)) {

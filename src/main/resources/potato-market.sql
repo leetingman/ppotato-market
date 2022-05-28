@@ -421,6 +421,14 @@ REFERENCES ITEM(ITEM_ID)
 ON DELETE CASCADE;
 
 		select * FROM IMAGE;
+		 select * FROM item；
+		 SELECT * FROM USER;
+		 show tables;
 		
+		 
 		
+
+
+insert into USER (USER_ID,USER_PASSWORD,USER_TEL,USER_ADDRESS,USER_EMAIL)
+VALUES ('asas12','1','1','',#{userEmail},#{userImage})
 	 

@@ -30,6 +30,7 @@ function connect(event) {
 		
 
 		let socket = new SockJS('/javatechie');
+		console.log(socket.onmessage);
 		stompClient = Stomp.over(socket);
 
 		stompClient.connect({}, onConnected, onError);

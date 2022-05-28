@@ -106,7 +106,7 @@
 								<div class="col-md-4">
 									<div class="form-group">
 										<label for="itemPrice" class="col-form-label required">Price</label>
-										<input name="itemPrice" type="number" class="form-control" id="itemPrice" min="0" required> <span class="input-group-addon">원</span>
+										<input name="itemPrice" type="text" class="form-control" id="itemPrice" min="0" required> <span class="input-group-addon">원</span>
 									</div>
 								</div>
 							</div>
